@@ -1,0 +1,42 @@
+{
+  "name": "@RomaPchel/typescript-config",
+  "version": "1.0.0",
+  "description": "Common configuration files used across projects.",
+  "engines": {
+    "node": ">=20.9"
+  },
+  "files": [
+    "dist/**/*",
+    ".prettierrc",
+    ".prettierignore",
+    ".swcrc",
+    "tsconfig.json",
+    "nodemon.json"
+  ],
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "echo info: no start script for this package... no worries... this is normal",
+    "check-version-collision": "[ \"$(npm view .@latest version)\" != $npm_package_version ] && exit 0 || echo \"Error: package version '$npm_package_version' already published, please run (p)npm version before merge \" && exit 1",
+    "build": "npx swc --strip-leading-paths ./src -d dist --config jsc.baseUrl=/src",
+    "prepare": "pnpm build && pnpm emitTypeDeclarations",
+    "emitTypeDeclarations": "npx tsc --declaration --emitDeclarationOnly",
+    "preversion": "pnpm prepare",
+    "lint": "eslint './src/**/*.ts' --ext .ts",
+    "lint:fix": "eslint './src/**/*.ts' --ext .ts --fix",
+    "format": "prettier -c .",
+    "format:fix": "prettier -c . -w",
+    "version": "npm run format && git add -A src",
+    "version:dependabot": "git checkout HEAD -- .npmrc && pnpm version patch",
+    "postversion": "git push && git push --tags"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.6.0",
+    "@swc/core": "^1.10.7",
+    "bcrypt": "^5.1.1",
+    "prettier": "3.4.2",
+    "typescript": "^5.7.3"
+  }
+}
