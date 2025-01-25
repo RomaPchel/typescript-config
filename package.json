@@ -1,6 +1,6 @@
 {
   "name": "kpi-diploma-typescript-core",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Common configuration files used across projects.",
   "engines": {
     "node": ">=20.9"
