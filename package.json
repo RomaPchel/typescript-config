@@ -1,5 +1,5 @@
 {
-  "name": "@RomaPchel/typescript-config",
+  "name": "kpi-diploma-typescript-config",
   "version": "1.0.0",
   "description": "Common configuration files used across projects.",
   "engines": {
